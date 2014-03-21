@@ -1,0 +1,15 @@
+
+
+def source_riml(file)
+  rimlfile = substitute(file, ".vim$", ".riml", "")
+  if filereadable(file)
+    execute "source #{file}"
+  elseif filereadable(rimlfile)
+    system("riml -c #{rimlfile}")
+    execute "source #{file}"
+  end
+end
+
+call s:source_riml('vimrc.vim')
+" s:source_riml('vimrc.vim')
+
